@@ -5,7 +5,7 @@ export interface CounterState {
 }
 
 const initialCounterState = {
-  count: 0,
+  count: 0
 }
 
 /**
@@ -20,12 +20,12 @@ export const counterReducer = (
     case CounterActionTypes.INCREMENT:
       return {
         ...state,
-        count: count + 1,
+        count: count + 1
       }
     case CounterActionTypes.DECREMENT:
       return {
         ...state,
-        count: count > 0 ? count - 1 : 0,
+        count: count > 0 ? count - 1 : 0
       }
     case CounterActionTypes.RESET:
       return initialCounterState

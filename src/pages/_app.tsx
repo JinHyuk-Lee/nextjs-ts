@@ -10,7 +10,10 @@ import '@common/css/index.scss'
  */
 
 const CustomApp: FC<AppProps> = ({ Component, pageProps }) => (
-  <Component {...pageProps} />
+  <>
+    <title>Next</title>
+    <Component {...pageProps} />
+  </>
 )
 
 export default storeWrapper.withRedux(CustomApp)

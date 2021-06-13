@@ -1,10 +1,4 @@
-import {
-  createStore,
-  applyMiddleware,
-  combineReducers,
-  AnyAction,
-  Reducer,
-} from 'redux'
+import { createStore, applyMiddleware, combineReducers, AnyAction, Reducer } from 'redux'
 import { composeWithDevTools } from 'redux-devtools-extension'
 import thunkMiddleware from 'redux-thunk'
 import { createWrapper, MakeStore, HYDRATE } from 'next-redux-wrapper'
@@ -19,16 +13,10 @@ const combinedReducers = combineReducers({ counter: counterReducer })
 
 const reducer: Reducer<AppState, AnyAction> = (state, action) => {
   if (action.type === HYDRATE) {
-    /* client state will be overwritten
-     * by server or static state hydation.
-     * Implement state preservation as needed.
-     * see: https://github.com/kirill-konshin/next-redux-wrapper#server-and-client-state-separation
-     */
-    const nextState = {
+    return {
       ...state,
-      ...action.payload,
+      ...action.payload
     }
-    return nextState
   }
   return combinedReducers(state, action)
 }
@@ -38,10 +26,7 @@ const reducer: Reducer<AppState, AnyAction> = (state, action) => {
  * Initialise and export redux store
  */
 const initStore: MakeStore<AppState> = () => {
-  return createStore(
-    reducer,
-    composeWithDevTools(applyMiddleware(thunkMiddleware))
-  )
+  return createStore(reducer, composeWithDevTools(applyMiddleware(thunkMiddleware)))
 }
 
 export const storeWrapper = createWrapper(initStore)

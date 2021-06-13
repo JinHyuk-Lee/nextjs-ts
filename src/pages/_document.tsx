@@ -4,33 +4,24 @@ import Document, {
   Main,
   NextScript,
   DocumentContext,
-  DocumentInitialProps,
+  DocumentInitialProps
 } from 'next/document'
-import sprite from 'svg-sprite-loader/runtime/sprite.build'
+import { Header } from '@components/header/header'
 
-interface CustomDocumentProps {
-  spriteContent: string
-}
-
-export default class CustomDocument extends Document<CustomDocumentProps> {
-  public static async getInitialProps(
-    ctx: DocumentContext
-  ): Promise<CustomDocumentProps & DocumentInitialProps> {
+export default class CustomDocument extends Document<DocumentInitialProps> {
+  public static async getInitialProps(ctx: DocumentContext): Promise<DocumentInitialProps> {
     const initialProps = await Document.getInitialProps(ctx)
-    const spriteContent = sprite.stringify()
-
     return {
-      spriteContent,
-      ...initialProps,
+      ...initialProps
     }
   }
 
   public render(): JSX.Element {
     return (
       <Html>
-        <Head>{/* your head if needed */}</Head>
+        <Head></Head>
         <body>
-          <div dangerouslySetInnerHTML={{ __html: this.props.spriteContent }} />
+          <Header />
           <Main />
           <NextScript />
         </body>

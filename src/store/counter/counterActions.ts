@@ -3,7 +3,7 @@ import { Action } from 'redux'
 export enum CounterActionTypes {
   INCREMENT = 'INCREMENT',
   DECREMENT = 'DECREMENT',
-  RESET = 'RESET',
+  RESET = 'RESET'
 }
 
 export type CounterAction =
@@ -12,13 +12,13 @@ export type CounterAction =
   | Action<CounterActionTypes.RESET>
 
 export const increment: CounterAction = {
-  type: CounterActionTypes.INCREMENT,
+  type: CounterActionTypes.INCREMENT
 }
 
 export const decrement: CounterAction = {
-  type: CounterActionTypes.DECREMENT,
+  type: CounterActionTypes.DECREMENT
 }
 
 export const reset: CounterAction = {
-  type: CounterActionTypes.RESET,
+  type: CounterActionTypes.RESET
 }
